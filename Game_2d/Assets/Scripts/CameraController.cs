@@ -10,13 +10,16 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         if (!player)
-            player = FindObjectOfType<Hero>().transform;
+        {
+            player = FindObjectOfType<player>().transform;
+        }
     }
-
     private void Update()
     {
         pos = player.position;
         pos.z = -10f;
+        pos.y += 3f;
+
         transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
     }
 }
