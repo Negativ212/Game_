@@ -18,9 +18,9 @@ TagManager:
   - enemy
   - Hero
   - playerMask
-  - 
-  - 
-  - 
+  - UI
+  - isGrounded
+  - Slime
   - 
   - 
   - 

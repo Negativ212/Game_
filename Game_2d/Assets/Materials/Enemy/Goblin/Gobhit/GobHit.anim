@@ -27,25 +27,27 @@ AnimationClip:
       value: {fileID: 21300000, guid: f81cfdb518081954a9af43883d58c9b3, type: 3}
     - time: 0.25
       value: {fileID: 21300000, guid: 1065ce3f949d08c498aaeda9bfc68d5c, type: 3}
-    - time: 0.33333334
+    - time: 0.75
       value: {fileID: 21300000, guid: 68c745e761b12f44eb6f39d5cc95ca70, type: 3}
-    - time: 0.41666666
+    - time: 0.8333333
       value: {fileID: 21300000, guid: e6c594f346775db49a9f4448d3bc33f8, type: 3}
-    - time: 0.5
+    - time: 0.9166667
       value: {fileID: 21300000, guid: 2a0b3382037484f48aeb87f6e1d42fb8, type: 3}
-    - time: 0.55
+    - time: 0.96666664
       value: {fileID: 21300000, guid: 8be7dd3f2a6c36144988bb0bbd5ae262, type: 3}
-    - time: 0.6166667
+    - time: 1.0333333
       value: {fileID: 21300000, guid: 771c504ff9ba8674a8539c34def9f931, type: 3}
-    - time: 0.7
+    - time: 1.1166667
       value: {fileID: 21300000, guid: ee9b8007441f79f42b3dc9313707c946, type: 3}
-    - time: 0.78333336
+    - time: 1.2
       value: {fileID: 21300000, guid: 9e86453dc0fd492499a50c63bbcefba7, type: 3}
-    - time: 0.8833333
+    - time: 1.3
       value: {fileID: 21300000, guid: 4d86281f5431c1a438f93e3dd143ecca, type: 3}
-    - time: 0.98333335
+    - time: 1.4
       value: {fileID: 21300000, guid: 914186a7de10b354f9701661b87caea2, type: 3}
-    - time: 1.0666667
+    - time: 1.4833333
+      value: {fileID: 21300000, guid: e2c4fa36759aa954085aabfa40a5d4bc, type: 3}
+    - time: 1.5166667
       value: {fileID: 21300000, guid: e2c4fa36759aa954085aabfa40a5d4bc, type: 3}
     attribute: m_Sprite
     path: New Sprite
@@ -80,12 +82,13 @@ AnimationClip:
     - {fileID: 21300000, guid: 4d86281f5431c1a438f93e3dd143ecca, type: 3}
     - {fileID: 21300000, guid: 914186a7de10b354f9701661b87caea2, type: 3}
     - {fileID: 21300000, guid: e2c4fa36759aa954085aabfa40a5d4bc, type: 3}
+    - {fileID: 21300000, guid: e2c4fa36759aa954085aabfa40a5d4bc, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0833334
+    m_StopTime: 1.5333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -105,7 +108,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.35
+  - time: 0.75
     functionName: TakeDamage
     data: 
     objectReferenceParameter: {fileID: 0}
