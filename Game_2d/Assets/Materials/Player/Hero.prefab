@@ -180,9 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b960182daaa0d4e80c3678b6f8d986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 5
+  maxLives: 0
   speed: 5
   jumpForce: 5
-  lives: 5
+  boostJump: 5
   isAttacking: 0
   isRecharger: 1
   attackPos: {fileID: 5660235006578924389}
@@ -190,6 +192,19 @@ MonoBehaviour:
   enemy:
     serializedVersion: 2
     m_Bits: 256
+  enemy2:
+    serializedVersion: 2
+    m_Bits: 0
+  groundedPoint: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  checkRadius: 0.2
+  jumpSound: {fileID: 0}
+  landSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: e39e7171fe629f04caa32752af0ced56, type: 3}
+  runSound: {fileID: 8300000, guid: 432413f77d229b94c94dc2b36f3fbfca, type: 3}
+  jumpFromSlimeSound: {fileID: 8300000, guid: 4952cc7ed88baa24187fe847160cb7e8, type: 3}
 --- !u!61 &6271193675400899911
 BoxCollider2D:
   m_ObjectHideFlags: 0
