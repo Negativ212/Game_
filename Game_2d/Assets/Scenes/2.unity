@@ -2542,6 +2542,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  positionZ: -10
+  positionY: 3
+  speed: 1
 --- !u!1001 &2076496406
 PrefabInstance:
   m_ObjectHideFlags: 0
