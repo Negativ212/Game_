@@ -37,6 +37,9 @@ public class Player : Entity // Наследуем от Entity
     public AudioClip jumpFromSlimeSound;
     private AudioSource audioSource;
 
+    public GameObject deathScreen;
+
+
     public enum States
     {
         idle,
@@ -254,8 +257,11 @@ public class Player : Entity // Наследуем от Entity
 
     public override void Die()
     {
-        Debug.Log("Player is dead!");
-        base.Die();
+        if (!deathScreen.activeSelf)
+        {
+            deathScreen.SetActive(true);
+        }
+            base.Die();
     }
 
     // Проверка завершения атаки
