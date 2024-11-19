@@ -19,7 +19,7 @@ public class GoblinBoss : Entity
 
     private Animator anim;
     private Transform player;
-
+    private Player playerPlayer;
     public Transform attackPos;
     public LayerMask playerMask;
     public float radius;
@@ -65,56 +65,64 @@ public class GoblinBoss : Entity
 
     public GameObject objectToActivate;
     public GameObject Xyi; // Префаб снаряда
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
+        playerPlayer = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
         anim = GetComponent<Animator>();
         currentPatrolPoint = patrolPoint1;
 
         PlayPatrolSounds();
 
-        // Запускаем основную корутину для управления атаками
-        StartCoroutine(AttackManagerRoutine());
+        if (playerPlayer.CurrentState != Player.States.Dead)
+            // Запускаем основную корутину для управления атаками
+            StartCoroutine(AttackManagerRoutine());
     }
 
     void Update()
     {
-        if (isDying)
-            return;
-
-        if (lives <= 0)
+        if (playerPlayer.CurrentState != Player.States.Dead)
         {
-            Die();
-            return;
-        }
 
-        // Проверяем, касается ли гоблин земли
-        bool grounded = IsGrounded();
+            if (isDying)
+                return;
 
-        // Проверка на расстояние до игрока
-        if (player != null)
-        {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - player.position.y); // Вертикальное расстояние до игрока
-
-            // Проверка, находится ли игрок в пределах радиусов
-            if (distanceToPlayer <= detectionRange && verticalDistanceToPlayer <= verticalChaseRange && grounded)
+            if (lives <= 0)
             {
-                StartChase();
-            }
-            else if (distanceToPlayer > chaseRange || verticalDistanceToPlayer > verticalChaseRange)
-            {
-                StopChase();
+                Die();
+                return;
             }
 
-            // Если гоблин преследует игрока
-            if (isChasing && !isSpecialAttackActive)
+            // Проверяем, касается ли гоблин земли
+            bool grounded = IsGrounded();
+
+        
+            // Проверка на расстояние до игрока
+            if (player != null)
             {
-                ChasePlayer();
-            }
-            else if (!isSpecialAttackActive)
-            {
-                Patrol();
+                float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+                float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - player.position.y); // Вертикальное расстояние до игрока
+
+                // Проверка, находится ли игрок в пределах радиусов
+                if (distanceToPlayer <= detectionRange && verticalDistanceToPlayer <= verticalChaseRange && grounded)
+                {
+                    StartChase();
+                }
+                else if (distanceToPlayer > chaseRange || verticalDistanceToPlayer > verticalChaseRange)
+                {
+                    StopChase();
+                }
+
+                // Если гоблин преследует игрока
+                if (isChasing && !isSpecialAttackActive)
+                {
+                    ChasePlayer();
+                }
+                else if (!isSpecialAttackActive)
+                {
+                    Patrol();
+                }
             }
         }
     }
@@ -123,6 +131,11 @@ public class GoblinBoss : Entity
     {
         while (true)
         {
+            if (playerPlayer == null || playerPlayer.CurrentState == Player.States.Dead)
+            {
+                yield break; // Останавливаем корутину, если игрок мертв
+            }
+
             // Ждем случайный интервал между атаками
             float randomInterval = Random.Range(20f, 30f);
             yield return new WaitForSeconds(randomInterval);
@@ -484,7 +497,7 @@ public class GoblinBoss : Entity
 
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (recharge >= startRecharge && other.CompareTag("player") && !isDying && lives > 0)
+        if (recharge >= startRecharge && other.CompareTag("player") && !isDying && lives > 0 && playerPlayer.CurrentState != Player.States.Dead)
         {
             var playerComponent = other.GetComponent<Player>();
             if (playerComponent != null && !isAttacking)

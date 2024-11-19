@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : Entity // Наследуем от Entity
 {
+    public GameObject player;
+
     [SerializeField] private float speed = 3f;
     [SerializeField] private float jumpForce = 15f;
     public float boostJump = 5f; // Сила буста прыжка
@@ -39,13 +41,15 @@ public class Player : Entity // Наследуем от Entity
 
     public GameObject deathScreen;
 
+    public States CurrentState => State; // Свойство для получения значения State
 
     public enum States
     {
         idle,
         run,
         jump,
-        attack
+        attack,
+        Dead
     }
 
     private States State
@@ -67,8 +71,10 @@ public class Player : Entity // Наследуем от Entity
 
     private void Update()
     {
-        // Устанавливаем состояние игрока в idle, если он на земле и не атакует
-        if (isGrounded && !isAttacking && isAttackFinished)
+        if (State != States.Dead)
+        {
+// Устанавливаем состояние игрока в idle, если он на земле и не атакует
+            if (isGrounded && !isAttacking && isAttackFinished)
             State = States.idle;
 
         // Обработка ввода для атаки
@@ -85,6 +91,8 @@ public class Player : Entity // Наследуем от Entity
 
         // Проверка состояния заземления
         CheckGround();
+        }
+            
     }
 
     private void Run()
@@ -257,12 +265,16 @@ public class Player : Entity // Наследуем от Entity
 
     public override void Die()
     {
+        State = States.Dead;
+        Debug.Log("Dead");
+
         if (!deathScreen.activeSelf)
         {
             deathScreen.SetActive(true);
         }
-            base.Die();
+        //base.Die();
     }
+
 
     // Проверка завершения атаки
     public bool IsAttackFinished()
