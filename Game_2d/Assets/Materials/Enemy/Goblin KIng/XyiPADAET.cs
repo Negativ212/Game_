@@ -34,7 +34,7 @@ public class XyiPADAET : MonoBehaviour
             }
         }
         // Проверка на столкновение с землей по маске groundMask
-        else if (other.CompareTag("Player"))
+        else if (other.CompareTag("Grounded"))
         {
             Destroy(gameObject); // Удаляем снаряд после урона
         }

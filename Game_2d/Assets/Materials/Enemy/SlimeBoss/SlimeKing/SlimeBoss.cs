@@ -134,10 +134,10 @@ public class SlimeBoss : Entity
     {
         Vector2[] spawnPositions = new Vector2[]
         {
-            new Vector2(-1944f, 100f),
-            new Vector2(-1940f, 104f),
-            new Vector2(-1906f, 100f),
-            new Vector2(-1902f, 104f)
+            new Vector2(-1930f, 100f),
+            new Vector2(-1920f, 104f),
+            new Vector2(-1909f, 100f),
+            new Vector2(-1909f, 104f)
         };
 
         foreach (Vector2 position in spawnPositions)

@@ -298,8 +298,8 @@ public class GoblinBoss : Entity
         int numberOfProjectiles = 3;
 
         // Задаем диапазоны координат
-        float minX = -1947f;
-        float maxX = -1886f;
+        float minX = -1935f;
+        float maxX = -1895f;
         float minY = 120f;
         float maxY = 130f;
 

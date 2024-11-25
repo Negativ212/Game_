@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TheEndLVL1 : MonoBehaviour
 {
-    public LayerMask playerMask;  // Открытая переменная слоя для игрока
-    public GameObject targetObject;  // Объект, который нужно активировать
+    public LayerMask playerMask;
+    public GameObject targetObject;
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,16 +11,22 @@ public class TheEndLVL1 : MonoBehaviour
         {
             Debug.Log("Коллизия с игроком!");
 
-            // Активируем целевой объект (например, меню перехода)
+            // Увеличиваем текущий уровень
+            int currentLevel = PlayerPrefs.GetInt("CurrentPlayerLevel", 1);
+            currentLevel++;
+            PlayerPrefs.SetInt("CurrentPlayerLevel", currentLevel);
+            PlayerPrefs.Save();
+            Debug.Log($"Новый уровень: {currentLevel}");
+
+            // Активируем целевой объект
             targetObject.SetActive(true);
 
             // Ставим игру на паузу
             Time.timeScale = 0f;
 
-            // Включаем курсор для взаимодействия с меню
+            // Включаем курсор
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-
         }
     }
 }
