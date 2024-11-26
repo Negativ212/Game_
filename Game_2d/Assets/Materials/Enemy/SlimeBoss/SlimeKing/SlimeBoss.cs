@@ -47,7 +47,7 @@ public class SlimeBoss : Entity
     private bool isInvulnerable = false; // Флаг для неуязвимости
     private bool isSummoning = false; // Флаг, указывающий на состояние Summon
 
-    private float specialAttackCooldown = 30f; // Время между активациями специальной атаки
+    private float specialAttackCooldown = 13f; // Время между активациями специальной атаки
     private float specialAttackDuration = 5f; // Длительность специальной атаки
 
     public GameObject projectilePrefab; // Префаб падающего снаряда

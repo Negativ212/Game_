@@ -137,7 +137,7 @@ public class GoblinBoss : Entity
             }
 
             // Ждем случайный интервал между атаками
-            float randomInterval = Random.Range(20f, 30f);
+            float randomInterval = Random.Range(7f, 10f);
             yield return new WaitForSeconds(randomInterval);
 
             // Выбираем тип атаки
